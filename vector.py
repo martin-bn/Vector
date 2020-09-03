@@ -1,4 +1,4 @@
-
+import pdb
 
 class Vector3D:
     def __init__(self, x,y,z):
@@ -13,7 +13,19 @@ class Vector3D:
     def __repr__(self):
         return f"{self.__class__.__name__}({self.x}, {self.y}, {self.z})"
 
-if __name__ == "__main__":
-    v = Vector3D(1,1,1)
-    print([v])
+    def __add__(self, other):
+        print("self = ", self)
+        print("other = ", other)
+        return Vector3D(self.x + other.x, self.y + other.y, + self.z + other.z)
+        
+    def __eq__(self, other):
+        """ Return True if self == other,
+        otherwise return False """
+        #pdb.set_trace()
+        return self.x == other.x and self.y == other.y and self.z==other.z
 
+if __name__ == "__main__":
+    v = Vector3D(1,4,2)
+    u = Vector3D(1,1,1)
+    w = u + v
+    w == Vector3D(2,5,3)
